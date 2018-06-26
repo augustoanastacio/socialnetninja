@@ -15,6 +15,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import model.Group;
 import model.SocialNetwork;
 import model.User;
 import view.Login.Login;
@@ -160,6 +161,10 @@ public class App implements Serializable{
     
     public static void showSearch(){
         mainView.showSearch(mainView.getSearchText());
+    }
+    
+    public static void showGroupView(Group group){
+        mainView.showGroupView(group);
     }
     
     public static void saveNetwork(){

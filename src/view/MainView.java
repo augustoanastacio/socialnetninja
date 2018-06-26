@@ -325,6 +325,12 @@ public class MainView extends javax.swing.JFrame {
         viewPanel = new PanelInfo(array, 3);
         mainPane.setViewportView(viewPanel);
     }
+    
+    public void showGroupView(Group group){
+        viewPanel = new GroupView(group);
+        mainPane.setViewportView(viewPanel);
+        
+    }
     public void showFriendsRequests(List array){
         viewPanel = new PanelInfo(array, 1);
         mainPane.setViewportView(viewPanel);
