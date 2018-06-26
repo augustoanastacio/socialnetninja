@@ -30,16 +30,10 @@ public class PostView extends javax.swing.JPanel {
         text.setText(this.post.getText());
         
         
-        commentary = new WriteCommentary();
+  
         GridBagLayout layout = new GridBagLayout(); 
         commentaryPanel.setLayout(layout);
-        GridBagConstraints c = new GridBagConstraints();
-            c.insets = new Insets(0, 0, 10, 10);
-            c.gridx = 1;
-            c.gridy = 0;
-            commentaryPanel.add(commentary, c);
-        
-        
+ 
     }
     public PostView(User user, Post post) {
         initComponents();
@@ -49,13 +43,10 @@ public class PostView extends javax.swing.JPanel {
         text.setText(post.getText());
         
         
-        commentary = new WriteCommentary();
+
         GridBagLayout layout = new GridBagLayout(); 
         commentaryPanel.setLayout(layout);
-        GridBagConstraints c = new GridBagConstraints();
-            c.gridx = 0;
-            c.gridy = 0;
-            commentaryPanel.add(commentary, c);
+
         
         
     }
@@ -198,8 +189,13 @@ public class PostView extends javax.swing.JPanel {
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void showCommentsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showCommentsButtonActionPerformed
-        
-        
+        commentary = new WriteCommentary();
+        GridBagConstraints c = new GridBagConstraints();
+            c.insets = new Insets(0, 0, 10, 10);
+            c.gridx = 1;
+            c.gridy = 0;
+            commentaryPanel.add(commentary, c);
+        App.showFeed();
     }//GEN-LAST:event_showCommentsButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
