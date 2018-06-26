@@ -5,8 +5,13 @@
  */
 package view.Feed;
 
+import control.App;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
+import model.Comment;
+import model.Post;
+import model.User;
 
 /**
  *
@@ -15,17 +20,29 @@ import java.awt.GridBagLayout;
 public class WriteAnswer extends javax.swing.JPanel {
 
     private Answer answer;
+    private User user;
+    private Post post;
     
-    public WriteAnswer() {
+    public WriteAnswer(Comment comment) {
         initComponents();
-        GridBagLayout layout = new GridBagLayout(); 
-        answerPanel.setLayout(layout);
+        this.user = App.getNetwork().getCurrentUser();
+        this.post = post;
+        textArea.setLineWrap(true);
         
-        answer = new Answer();
-        GridBagConstraints c = new GridBagConstraints();
-        c.gridx = 0;
-        c.gridy = 0;
-        answerPanel.add(answer, c);
+        GridBagLayout layout = new GridBagLayout();
+        answerPanel.setLayout(layout);
+
+        int i = 0;
+        for(Answer answer: comment.g){
+            GridBagConstraints c = new GridBagConstraints();
+            commentary = new Commentary(App.getNetwork().getCurrentUser(), comment);
+            commentaryPanel.add(commentary, c);
+            c.insets = new Insets(0, 0, 10, 10);
+            c.gridx = 0;
+            c.gridy = i;
+            commentaryPanel.add(commentary, c);
+            i++;     
+        }
     }
 
     /**
@@ -37,12 +54,10 @@ public class WriteAnswer extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
         answerBotton = new javax.swing.JButton();
         answerPanel = new javax.swing.JPanel();
-
-        jScrollPane2.setViewportView(jTextPane1);
+        jScrollPane1 = new javax.swing.JScrollPane();
+        textArea = new javax.swing.JTextArea();
 
         answerBotton.setText("Responder");
 
@@ -57,28 +72,32 @@ public class WriteAnswer extends javax.swing.JPanel {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
+        textArea.setColumns(20);
+        textArea.setRows(5);
+        jScrollPane1.setViewportView(textArea);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addComponent(answerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 312, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(answerBotton)))
                 .addContainerGap())
-            .addComponent(answerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(answerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2)
                 .addComponent(answerBotton)
                 .addGap(3, 3, 3))
         );
@@ -88,7 +107,7 @@ public class WriteAnswer extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton answerBotton;
     private javax.swing.JPanel answerPanel;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextPane jTextPane1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea textArea;
     // End of variables declaration//GEN-END:variables
 }
