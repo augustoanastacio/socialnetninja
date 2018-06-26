@@ -170,7 +170,7 @@ public class UserGroups extends javax.swing.JPanel {
                 break;
             
             case 3:
-                //show group view
+                App.showGroupView();
                 System.out.println("Groups view");
                 break;
             default:
