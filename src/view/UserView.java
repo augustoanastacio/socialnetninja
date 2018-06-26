@@ -41,11 +41,6 @@ public class UserView extends javax.swing.JPanel {
         userViewPanel.setViewportView(viewPanel);
     }
     
-    public void showAboutView(){
-        viewPanel = new AboutEdit(this.user);
-        viewPanel.setEnabled(false);
-        userViewPanel.setViewportView(viewPanel);
-    }
     public void showFriends(){
         viewPanel = new PanelInfo(this.user.getFriends(), 0);
         userViewPanel.setViewportView(viewPanel);

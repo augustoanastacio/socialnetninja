@@ -29,7 +29,6 @@ public class NewPost extends javax.swing.JFrame {
 
     private ImageIcon image;
     private User user;
-    private PhotosView photoView;
             
     public NewPost() {
         initComponents();
