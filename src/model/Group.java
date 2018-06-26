@@ -6,13 +6,18 @@
 package model;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.ImageIcon;
 
 public class Group implements Serializable{
 	private String name;
+        private String bio;
         private ImageIcon profilePicture;
+        private Date dateCreated;
 	private List<User> members;
 	private List<User> memberRequests;
         private List<User> blacklist;
@@ -88,4 +93,27 @@ public class Group implements Serializable{
 	public void addPost(Post newPost) {
 		this.posts.add(newPost);
 	}
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
+    public Date getDateCreated() {
+        return dateCreated;
+    }
+    
+    public String getDateCreatedString(){
+        DateFormat df = new SimpleDateFormat("dd/mm/yyyy");
+        return df.format(this.dateCreated);
+    }
+
+    public void setDateCreated(Date dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+        
+        
 }
