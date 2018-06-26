@@ -25,7 +25,7 @@ public class WriteCommentary extends javax.swing.JPanel {
    private User user;
    private Post post;
     
-    public WriteCommentary() {
+    public WriteCommentary(Post post) {
         initComponents();
         this.user = App.getNetwork().getCurrentUser();
         this.post = post;
