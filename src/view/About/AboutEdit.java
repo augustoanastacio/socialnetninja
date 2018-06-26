@@ -3,6 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+//sou foda na cama te ixkulacho
 package view.About;
 
 import control.App;
@@ -11,6 +13,8 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -18,37 +22,32 @@ import model.User;
 
 /**
  *
- * @author italo
+ * @author Usuario
  */
-public class AboutView extends javax.swing.JPanel {
-    private User user;
-    private ImageIcon image;
+
+
+public class AboutEdit extends javax.swing.JFrame {
     
+    private final User user;
+    private ImageIcon image;
     /**
-     * Creates new form AboutView
+     * Creates new form ProfileView1
      */
-    public AboutView(User user) {
-        this.user = user;
-        
+    public AboutEdit() {
+        user = App.getNetwork().getCurrentUser();
         initComponents();
-        
-        if(!(this.user == App.getNetwork().getCurrentUser())){
-            saveChangesButton.setEnabled(false);
-            saveChangesButton.setVisible(false);
-            
-            photoChooserButton.setEnabled(false);
-            photoChooserButton.setVisible(false);
-        }
-        
-        nameField.setText(this.user.getName());
-        dateFField.setText(this.user.getDobString());
-        addressField.setText(this.user.getAddress());
-        phoneFField.setText(this.user.getPhone());
-        aboutAreaField.setText(this.user.getBio());
-        this.image = this.user.getProfilePicture();
-        if(this.user.getProfilePicture()!= null){
+        nameField.setText(user.getName());
+        dateFField.setText(user.getDobString());
+        addressField.setText(user.getAddress());
+        phoneFField.setText(user.getPhone());
+        aboutAreaField.setText(user.getBio());
+        this.image = user.getProfilePicture();
+        if(user.getProfilePicture()!= null){
             lblfoto.setIcon(new ImageIcon(image.getImage().getScaledInstance(lblfoto.getWidth(), lblfoto.getHeight(), Image.SCALE_SMOOTH)));
         }
+        
+        
+        
     }
 
     /**
@@ -60,7 +59,7 @@ public class AboutView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        infoPanel = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
         nameField = new javax.swing.JTextField();
         lblName = new javax.swing.JLabel();
         lblDob = new javax.swing.JLabel();
@@ -73,9 +72,12 @@ public class AboutView extends javax.swing.JPanel {
         dateFField = new javax.swing.JFormattedTextField();
         phoneFField = new javax.swing.JFormattedTextField();
         saveChangesButton = new javax.swing.JButton();
-        photoPanel = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
         lblfoto = new javax.swing.JLabel();
-        photoChooserButton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         lblName.setText("Nome");
 
@@ -116,14 +118,14 @@ public class AboutView extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout infoPanelLayout = new javax.swing.GroupLayout(infoPanel);
-        infoPanel.setLayout(infoPanelLayout);
-        infoPanelLayout.setHorizontalGroup(
-            infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(infoPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(nameField)
                         .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lblDob)
@@ -137,9 +139,9 @@ public class AboutView extends javax.swing.JPanel {
                     .addComponent(saveChangesButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        infoPanelLayout.setVerticalGroup(
-            infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(infoPanelLayout.createSequentialGroup()
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -168,59 +170,58 @@ public class AboutView extends javax.swing.JPanel {
         lblfoto.setText("Foto de Perfil");
         lblfoto.setRequestFocusEnabled(false);
 
-        photoChooserButton.setText("Alterar foto de perfil");
-        photoChooserButton.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("Alterar foto de perfil");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                photoChooserButtonActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout photoPanelLayout = new javax.swing.GroupLayout(photoPanel);
-        photoPanel.setLayout(photoPanelLayout);
-        photoPanelLayout.setHorizontalGroup(
-            photoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(photoPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(photoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(photoChooserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblfoto, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(12, Short.MAX_VALUE))
         );
-        photoPanelLayout.setVerticalGroup(
-            photoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(photoPanelLayout.createSequentialGroup()
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(lblfoto, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(photoChooserButton)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jButton1)
+                .addGap(0, 109, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 503, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(infoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(photoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 408, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(infoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(photoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap()))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(126, Short.MAX_VALUE))))
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void dateFFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateFFieldActionPerformed
@@ -228,48 +229,88 @@ public class AboutView extends javax.swing.JPanel {
     }//GEN-LAST:event_dateFFieldActionPerformed
 
     private void saveChangesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveChangesButtonActionPerformed
-        this.user.setName(nameField.getText());
-
+        // TODO add your handling code here:
+        
+        user.setName(nameField.getText());
+        
         DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
         Date dob = new Date();
         try {
             dob = df.parse(dateFField.getText());
         } catch (ParseException ex) {
             JOptionPane.showMessageDialog(null, "Falha na data!" + ex);
-        }
-        this.user.setDob(dob);
-        this.user.setName(nameField.getText());
-        this.user.setName(nameField.getText());
-        this.user.setAddress(addressField.getText());
-        this.user.setPhone(phoneFField.getText());
-        this.user.setBio(aboutAreaField.getText());
-        this.user.setProfilePicture(this.image);
-
-        if(this.user == App.getNetwork().getCurrentUser()){
-            App.showAboutView();
-        } else {
-
-        }
+        } 
+        user.setDob(dob);
+        user.setName(nameField.getText());
+        user.setName(nameField.getText());
+        user.setAddress(addressField.getText());
+        user.setPhone(phoneFField.getText());
+        user.setBio(aboutAreaField.getText());
+        user.setProfilePicture(this.image);
+        this.dispose();
     }//GEN-LAST:event_saveChangesButtonActionPerformed
 
-    private void photoChooserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_photoChooserButtonActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         JFileChooser photo = new JFileChooser();
         photo.setDialogTitle("Selecione uma foto");
         photo.setFileSelectionMode(JFileChooser.FILES_ONLY);
 
         int opc = photo.showOpenDialog(this);
         if(opc == JFileChooser.APPROVE_OPTION){
-            this.image = new ImageIcon(photo.getSelectedFile().getPath());
-            lblfoto.setIcon(new ImageIcon(image.getImage().getScaledInstance(lblfoto.getWidth(), lblfoto.getHeight(), Image.SCALE_DEFAULT)));
-        }
-    }//GEN-LAST:event_photoChooserButtonActionPerformed
+        this.image = new ImageIcon(photo.getSelectedFile().getPath());
+        lblfoto.setIcon(new ImageIcon(image.getImage().getScaledInstance(lblfoto.getWidth(), lblfoto.getHeight(), Image.SCALE_DEFAULT)));
+        }  
+    }//GEN-LAST:event_jButton1ActionPerformed
 
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(AboutEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(AboutEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(AboutEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(AboutEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new AboutEdit().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea aboutAreaField;
     private javax.swing.JTextField addressField;
     private javax.swing.JFormattedTextField dateFField;
-    private javax.swing.JPanel infoPanel;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAbout;
     private javax.swing.JLabel lblAddress;
@@ -279,8 +320,6 @@ public class AboutView extends javax.swing.JPanel {
     private javax.swing.JLabel lblfoto;
     private javax.swing.JTextField nameField;
     private javax.swing.JFormattedTextField phoneFField;
-    private javax.swing.JButton photoChooserButton;
-    private javax.swing.JPanel photoPanel;
     private javax.swing.JButton saveChangesButton;
     // End of variables declaration//GEN-END:variables
 }
