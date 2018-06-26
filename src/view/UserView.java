@@ -8,7 +8,9 @@ package view;
 import control.App;
 import javax.swing.JPanel;
 import model.User;
+import view.About.AboutEdit;
 import view.Feed.FeedView;
+import view.SearchSolicitationBlock.PanelInfo;
 
 /**
  *
@@ -25,10 +27,10 @@ public class UserView extends javax.swing.JPanel {
         initComponents();
         
         this.user = user;
-        this.jLabel2.setText(this.user.getName());
+        this.userNameLabel.setText(this.user.getName());
         
         if(App.getNetwork().getCurrentUser().getFriends().contains(user)){
-            jButton6.setText("Desfazer Amizade");
+            showFriendRequestsButton.setText("Desfazer Amizade");
         }
         
         showFeed();
@@ -38,6 +40,18 @@ public class UserView extends javax.swing.JPanel {
         viewPanel = new FeedView(this.user);
         userViewPanel.setViewportView(viewPanel);
     }
+    
+    public void showAboutView(){
+        viewPanel = new AboutEdit(this.user);
+        viewPanel.setEnabled(false);
+        userViewPanel.setViewportView(viewPanel);
+    }
+    public void showFriends(){
+        viewPanel = new PanelInfo(this.user.getFriends(), 0);
+        userViewPanel.setViewportView(viewPanel);
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -48,39 +62,69 @@ public class UserView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        profilePictureLabel = new javax.swing.JLabel();
+        showFriendsButton = new javax.swing.JButton();
+        showGalleryButton = new javax.swing.JButton();
+        userNameLabel = new javax.swing.JLabel();
+        showGroupsButton = new javax.swing.JButton();
+        blockButton = new javax.swing.JButton();
+        showAboutButton = new javax.swing.JButton();
+        showFriendRequestsButton = new javax.swing.JButton();
         userViewPanel = new javax.swing.JScrollPane();
-        jButton7 = new javax.swing.JButton();
+        showFeedButton = new javax.swing.JButton();
 
-        jLabel1.setText("Foto do usuario");
+        profilePictureLabel.setText("Foto do usuario");
 
-        jButton1.setText("Ver Amigos");
-
-        jButton2.setText("Ver Fotos");
-
-        jLabel2.setText("Nome do usuário");
-
-        jButton3.setText("Ver Grupos");
-
-        jButton4.setText("Bloquear");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        showFriendsButton.setText("Ver Amigos");
+        showFriendsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                showFriendsButtonActionPerformed(evt);
             }
         });
 
-        jButton5.setText("Sobre");
+        showGalleryButton.setText("Ver Fotos");
+        showGalleryButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showGalleryButtonActionPerformed(evt);
+            }
+        });
 
-        jButton6.setText("Solicitar Amizade");
+        userNameLabel.setText("Nome do usuário");
 
-        jButton7.setText("Home");
+        showGroupsButton.setText("Ver Grupos");
+        showGroupsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showGroupsButtonActionPerformed(evt);
+            }
+        });
+
+        blockButton.setText("Bloquear");
+        blockButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                blockButtonActionPerformed(evt);
+            }
+        });
+
+        showAboutButton.setText("Sobre");
+        showAboutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showAboutButtonActionPerformed(evt);
+            }
+        });
+
+        showFriendRequestsButton.setText("Solicitar Amizade");
+        showFriendRequestsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showFriendRequestsButtonActionPerformed(evt);
+            }
+        });
+
+        showFeedButton.setText("Mural");
+        showFeedButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showFeedButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -90,59 +134,83 @@ public class UserView extends javax.swing.JPanel {
                 .addComponent(userViewPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(showFriendRequestsButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
+                    .addComponent(showGroupsButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(showGalleryButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(showAboutButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(profilePictureLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(userNameLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(showFriendsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(blockButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(showFeedButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(profilePictureLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(userNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton5)
+                .addComponent(showAboutButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton7)
+                .addComponent(showFeedButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(showFriendsButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
+                .addComponent(showGalleryButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
+                .addComponent(showGroupsButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton6)
+                .addComponent(showFriendRequestsButton)
                 .addGap(29, 29, 29)
-                .addComponent(jButton4)
+                .addComponent(blockButton)
                 .addContainerGap())
             .addComponent(userViewPanel)
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void blockButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_blockButtonActionPerformed
         App.getNetwork().getCurrentUser().addToBlacklist(this.user);
         App.showFeed();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_blockButtonActionPerformed
+
+    private void showAboutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showAboutButtonActionPerformed
+        
+    }//GEN-LAST:event_showAboutButtonActionPerformed
+
+    private void showFeedButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showFeedButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_showFeedButtonActionPerformed
+
+    private void showFriendsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showFriendsButtonActionPerformed
+        showFriends();
+    }//GEN-LAST:event_showFriendsButtonActionPerformed
+
+    private void showGalleryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showGalleryButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_showGalleryButtonActionPerformed
+
+    private void showGroupsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showGroupsButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_showGroupsButtonActionPerformed
+
+    private void showFriendRequestsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showFriendRequestsButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_showFriendRequestsButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton blockButton;
+    private javax.swing.JLabel profilePictureLabel;
+    private javax.swing.JButton showAboutButton;
+    private javax.swing.JButton showFeedButton;
+    private javax.swing.JButton showFriendRequestsButton;
+    private javax.swing.JButton showFriendsButton;
+    private javax.swing.JButton showGalleryButton;
+    private javax.swing.JButton showGroupsButton;
+    private javax.swing.JLabel userNameLabel;
     private javax.swing.JScrollPane userViewPanel;
     // End of variables declaration//GEN-END:variables
 }
