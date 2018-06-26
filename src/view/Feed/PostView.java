@@ -40,7 +40,7 @@ public class PostView extends javax.swing.JPanel {
         GridBagLayout layout = new GridBagLayout(); 
         commentaryPanel.setLayout(layout);
         
-        commentary = new WriteCommentary();
+        commentary = new WriteCommentary(this.post);
         GridBagConstraints c = new GridBagConstraints();
         c.gridx = 0;
         c.gridy = 0;
@@ -63,7 +63,7 @@ public class PostView extends javax.swing.JPanel {
         GridBagLayout layout = new GridBagLayout(); 
         commentaryPanel.setLayout(layout);
         
-        commentary = new WriteCommentary();
+        commentary = new WriteCommentary(this.post);
         GridBagConstraints c = new GridBagConstraints();
         c.gridx = 0;
         c.gridy = 0;
