@@ -7,6 +7,8 @@ package view.Feed;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import model.Comment;
+import model.User;
 
 /**
  *
@@ -17,12 +19,15 @@ public class Commentary extends javax.swing.JPanel {
     private WriteAnswer answer;
     private boolean pressed;
     
-    public Commentary() {
+    public Commentary(User user, Comment comment) {
         initComponents();
         pressed = true;
          GridBagLayout layout = new GridBagLayout(); 
         answerPanel.setLayout(layout);
         answerPanel.setVisible(false);
+        
+        userLabel.setText(user.getName());
+        txtPanel.setText(comment.getText());
         
         answer = new WriteAnswer();
         GridBagConstraints c = new GridBagConstraints();
