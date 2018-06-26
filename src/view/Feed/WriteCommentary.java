@@ -128,6 +128,11 @@ public class WriteCommentary extends javax.swing.JPanel {
     private void commentBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_commentBottonActionPerformed
         comment = new Comment(user.getName(), textArea.getText(), new Date());
         post.addComment(comment);
+        if(this.user == App.getNetwork().getCurrentUser()){
+            App.showFeed();
+        }else{
+            App.showProfile(user);
+        }
     }//GEN-LAST:event_commentBottonActionPerformed
 
 
