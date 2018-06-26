@@ -70,25 +70,25 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="userName" max="32767" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="logout" alignment="0" max="32767" attributes="0"/>
-                              <Component id="blocked" alignment="0" max="32767" attributes="0"/>
-                              <Component id="solicitations" alignment="0" max="32767" attributes="0"/>
-                              <Component id="friends" alignment="0" max="32767" attributes="0"/>
-                              <Component id="groups" alignment="0" max="32767" attributes="0"/>
-                              <Component id="photos" alignment="0" pref="131" max="32767" attributes="0"/>
-                              <Component id="home" alignment="0" max="32767" attributes="0"/>
-                              <Component id="Profile" alignment="0" max="32767" attributes="0"/>
-                              <Component id="profilePicture" alignment="0" min="-2" pref="80" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="logout" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="blocked" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="solicitations" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="friends" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="groups" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="photos" alignment="0" pref="131" max="32767" attributes="0"/>
+                                  <Component id="home" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="Profile" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <Component id="userName" alignment="0" min="-2" pref="131" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="14" max="32767" attributes="0"/>
                       </Group>
+                      <Component id="lblprofilePicture" alignment="1" max="32767" attributes="0"/>
                   </Group>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -96,10 +96,10 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="profilePicture" min="-2" pref="80" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="userName" min="-2" pref="36" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="lblprofilePicture" min="-2" pref="154" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="userName" min="-2" pref="24" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                   <Component id="Profile" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="home" min="-2" max="-2" attributes="0"/>
@@ -115,16 +115,13 @@
                   <Component id="blocked" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
                   <Component id="logout" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="118" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="profilePicture">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Foto do perfil"/>
-          </Properties>
+        <Component class="javax.swing.JLabel" name="lblprofilePicture">
         </Component>
         <Component class="javax.swing.JLabel" name="userName">
           <Properties>
