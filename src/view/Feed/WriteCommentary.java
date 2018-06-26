@@ -6,6 +6,9 @@
 package view.Feed;
 
 import control.App;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 
 /**
  *
@@ -13,11 +16,18 @@ import control.App;
  */
 public class WriteCommentary extends javax.swing.JPanel {
 
-    /**
-     * Creates new form Commentary
-     */
+   private Commentary commentary;
+    
     public WriteCommentary() {
         initComponents();
+        GridBagLayout layout = new GridBagLayout();
+        commentaryPanel.setLayout(layout);
+
+        commentary = new Commentary();
+        GridBagConstraints c = new GridBagConstraints();
+        c.gridx = 0;
+        c.gridy = 0;
+        commentaryPanel.add(commentary, c);
     }
 
     /**
@@ -51,6 +61,11 @@ public class WriteCommentary extends javax.swing.JPanel {
         jScrollPane2.setViewportView(jTextPane1);
 
         commentBotton.setText("Comentar");
+        commentBotton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                commentBottonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout commentaryPanelLayout = new javax.swing.GroupLayout(commentaryPanel);
         commentaryPanel.setLayout(commentaryPanelLayout);
@@ -67,28 +82,27 @@ public class WriteCommentary extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 312, Short.MAX_VALUE)
-                        .addComponent(commentBotton))
-                    .addComponent(commentaryPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+            .addComponent(commentaryPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 332, Short.MAX_VALUE)
+                .addComponent(commentBotton))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addComponent(commentaryPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(commentBotton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(commentaryPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(3, 3, 3))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void commentBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_commentBottonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_commentBottonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
