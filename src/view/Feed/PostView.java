@@ -53,9 +53,8 @@ public class PostView extends javax.swing.JPanel {
         initComponents();
         this.user = user;
         this.post = post;
+        
         pressed = true;
-        name.setText(post.getUser().getName());
-        text.setText(post.getText());
         name.setText(post.getUser().getName());
         text.setText(post.getText());
         
@@ -196,8 +195,13 @@ public class PostView extends javax.swing.JPanel {
     }//GEN-LAST:event_privacyButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
-        App.getNetwork().getCurrentUser().removePost(this.post);
-        App.showFeed();
+        if(this.user == App.getNetwork().getCurrentUser()){
+            this.user.removePost(this.post);
+            App.showFeed();
+        } else{
+            this.user.removePost(this.post);
+            App.showProfile(this.user);
+        }
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void showCommentsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showCommentsButtonActionPerformed

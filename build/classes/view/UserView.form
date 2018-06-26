@@ -64,6 +64,9 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="profilePictureLabel">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/images/casinha.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Foto do usuario"/>
       </Properties>
     </Component>

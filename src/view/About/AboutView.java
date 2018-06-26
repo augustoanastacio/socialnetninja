@@ -30,7 +30,8 @@ public class AboutView extends javax.swing.JPanel {
         lblPhone.setText(user.getPhone());
         txtAreaBio.setText(user.getBio());
         ImageIcon image = user.getProfilePicture();
-        lblfoto.setIcon(new ImageIcon(image.getImage().getScaledInstance(lblfoto.getWidth(), lblfoto.getHeight(), Image.SCALE_SMOOTH)));
+        if(image != null)
+         lblfoto.setIcon(new ImageIcon(image.getImage().getScaledInstance(lblfoto.getWidth(), lblfoto.getHeight(), Image.SCALE_SMOOTH)));
 
       
     }
@@ -42,7 +43,8 @@ public class AboutView extends javax.swing.JPanel {
         lblDob.setText(group.getDateCreatedString());
         txtAreaBio.setText(group.getBio());
         ImageIcon image = group.getProfilePicture();
-        lblfoto.setIcon(new ImageIcon(image.getImage().getScaledInstance(lblfoto.getWidth(), lblfoto.getHeight(), Image.SCALE_SMOOTH)));
+        if(image != null)
+            lblfoto.setIcon(new ImageIcon(image.getImage().getScaledInstance(lblfoto.getWidth(), lblfoto.getHeight(), Image.SCALE_SMOOTH)));
         lbladdresslbl.setVisible(false);
         lbldatalbl.setText("Data de Criação:");
         lblfonelbl.setVisible(false);
@@ -153,7 +155,7 @@ public class AboutView extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE)
+            .addComponent(jScrollPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
