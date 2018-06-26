@@ -63,7 +63,7 @@ public class UserGroups extends javax.swing.JPanel {
                 jButton1.setText("Ver perfil");
                 if(App.getNetwork().getCurrentUser().isFriendsWith(this.user)){
                     jButton2.setText("Desfazer amizade");
-                } else if(App.getNetwork().getCurrentUser().isInFriendRequests(this.user)){
+                } else if(this.user.isInFriendRequests(App.getNetwork().getCurrentUser())){
                     jButton2.setText("Cancelar solicitação");
                 } else {
                     jButton2.setText("Solicitar amizade");
@@ -133,6 +133,7 @@ public class UserGroups extends javax.swing.JPanel {
         switch(panelFunction){
             case 1:
                 App.getNetwork().getCurrentUser().removeFriendRequest(this.user);
+                App.showFriendRequests();
                 break;
             case 3:
                 if(this.group.isMember(App.getNetwork().getCurrentUser())){
@@ -147,8 +148,10 @@ public class UserGroups extends javax.swing.JPanel {
                 if(App.getNetwork().getCurrentUser().isFriendsWith(this.user)){
                     App.getNetwork().getCurrentUser().removeFriend(this.user);
                     this.user.removeFriend(App.getNetwork().getCurrentUser());
-                } else if(App.getNetwork().getCurrentUser().isInFriendRequests(this.user)){
+                    App.showSearch();
+                } else if(this.user.isInFriendRequests(App.getNetwork().getCurrentUser())){
                     this.user.removeFriendRequest(App.getNetwork().getCurrentUser());
+                    App.showSearch();
                 } else {
                     this.user.addFriendRequest(App.getNetwork().getCurrentUser());
                     App.showSearch();

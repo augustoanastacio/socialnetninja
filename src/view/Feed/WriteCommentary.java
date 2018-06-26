@@ -9,6 +9,10 @@ import control.App;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.util.Date;
+import model.Comment;
+import model.Post;
+import model.User;
 
 /**
  *
@@ -17,9 +21,15 @@ import java.awt.Insets;
 public class WriteCommentary extends javax.swing.JPanel {
 
    private Commentary commentary;
+   private Comment comment;
+   private User user;
+   private Post post;
     
-    public WriteCommentary() {
+    public WriteCommentary(Post post) {
         initComponents();
+        this.user = App.getNetwork().getCurrentUser();
+        this.post = post;
+        
         GridBagLayout layout = new GridBagLayout();
         commentaryPanel.setLayout(layout);
 
@@ -29,6 +39,7 @@ public class WriteCommentary extends javax.swing.JPanel {
         c.gridy = 0;
         commentaryPanel.add(commentary, c);
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -40,10 +51,10 @@ public class WriteCommentary extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
         commentBotton = new javax.swing.JButton();
         commentaryPanel = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        textArea = new javax.swing.JTextArea();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -57,8 +68,6 @@ public class WriteCommentary extends javax.swing.JPanel {
         );
 
         setBackground(new java.awt.Color(102, 255, 51));
-
-        jScrollPane2.setViewportView(jTextPane1);
 
         commentBotton.setText("Comentar");
         commentBotton.addActionListener(new java.awt.event.ActionListener() {
@@ -78,30 +87,46 @@ public class WriteCommentary extends javax.swing.JPanel {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
+        textArea.setColumns(20);
+        textArea.setRows(5);
+        jScrollPane1.setViewportView(textArea);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(commentaryPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 332, Short.MAX_VALUE)
-                .addComponent(commentBotton))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(commentBotton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 10, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(commentaryPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(commentBotton)
                 .addGap(3, 3, 3))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void commentBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_commentBottonActionPerformed
-        // TODO add your handling code here:
+        comment = new Comment(user.getName(), textArea.getText(), new Date());
+        post.getComments().add(comment);
+        
+        commentary = new Commentary();
+        GridBagConstraints c = new GridBagConstraints();
+        c.gridx = 0;
+        c.gridy = 0;
+        commentaryPanel.add(commentary, c);
     }//GEN-LAST:event_commentBottonActionPerformed
 
 
@@ -109,7 +134,7 @@ public class WriteCommentary extends javax.swing.JPanel {
     private javax.swing.JButton commentBotton;
     private javax.swing.JPanel commentaryPanel;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextPane jTextPane1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea textArea;
     // End of variables declaration//GEN-END:variables
 }
