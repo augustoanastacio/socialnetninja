@@ -8,7 +8,7 @@ package view;
 import control.App;
 import javax.swing.JPanel;
 import model.User;
-import view.About.AboutEdit;
+import view.About.AboutView;
 import view.Feed.FeedView;
 import view.SearchSolicitationBlock.PanelInfo;
 
@@ -42,7 +42,7 @@ public class UserView extends javax.swing.JPanel {
     }
     
     public void showAboutView(){
-        viewPanel = new AboutEdit(this.user);
+        viewPanel = new AboutView(App.getNetwork().getCurrentUser());
         viewPanel.setEnabled(false);
         userViewPanel.setViewportView(viewPanel);
     }

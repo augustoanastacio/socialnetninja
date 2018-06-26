@@ -21,7 +21,7 @@ import view.Login.Login;
 import view.Login.NewUser;
 import view.Login.ForgotenPassword;
 import view.MainView;
-import view.About.AboutEdit;
+import view.About.AboutView;
 import view.CreationWindows.NewCommentary;
 import view.CreationWindows.NewPost;
 
@@ -95,10 +95,6 @@ public class App implements Serializable{
         mainWindow.setVisible(true);
     }
     
-    public static void showAboutEdit(){
-        secondaryWindow = new AboutEdit();
-        secondaryWindow.setVisible(true);
-    }
     public static void showNewCommentary(){
         secondaryWindow = new NewCommentary();
         secondaryWindow.setVisible(true);
@@ -160,6 +156,10 @@ public class App implements Serializable{
     
     public static void showSearch(){
         mainView.showSearch(mainView.getSearchText());
+    }
+    
+    public static void showAboutView(){
+        mainView.showAboutView();
     }
     
     public static void saveNetwork(){

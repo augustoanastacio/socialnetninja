@@ -14,24 +14,27 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import model.Group;
 import model.User;
+import view.About.AboutView;
 import view.Feed.FeedView;
 import view.Gallery.GaleryView;
 import view.SearchSolicitationBlock.NotFound;
 import view.SearchSolicitationBlock.PanelInfo;
 import view.SearchSolicitationBlock.Search;
+
 /**
  *
  * @author augus
  */
 public class MainView extends javax.swing.JFrame {
+
     private JPanel viewPanel;
-    
+
     public MainView() {
         initComponents();
         ImageIcon profilePicture;
         User user = App.getNetwork().getCurrentUser();
         profilePicture = user.getProfilePicture();
-        if(profilePicture != null){
+        if (profilePicture != null) {
             this.lblprofilePicture.setIcon(new ImageIcon(profilePicture.getImage().getScaledInstance(lblprofilePicture.getWidth(), lblprofilePicture.getHeight(), Image.SCALE_SMOOTH)));
         }
         this.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -41,10 +44,9 @@ public class MainView extends javax.swing.JFrame {
                 System.exit(0);
             }
         });
-        
+
         this.showFeed();
     }
-    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -228,11 +230,11 @@ public class MainView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void friendsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_friendsActionPerformed
-        if(App.getNetwork().getCurrentUser().getFriends().size()==0){
+        if (App.getNetwork().getCurrentUser().getFriends().size() == 0) {
             showNotFound("amigos");
-        } 
-        else
-        showFriends(App.getNetwork().getCurrentUser().getFriends());
+        } else {
+            showFriends(App.getNetwork().getCurrentUser().getFriends());
+        }
     }//GEN-LAST:event_friendsActionPerformed
 
     private void homeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeActionPerformed
@@ -240,7 +242,7 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_homeActionPerformed
 
     private void ProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProfileActionPerformed
-        App.showAboutEdit();
+        App.showAboutView();
     }//GEN-LAST:event_ProfileActionPerformed
 
     private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
@@ -257,32 +259,32 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_photosActionPerformed
 
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
-         showSearch(searchText.getText());
-         
+        showSearch(searchText.getText());
+
     }//GEN-LAST:event_searchActionPerformed
 
     private void groupsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_groupsActionPerformed
-        if(App.getNetwork().getCurrentUser().getGroups().size()==0){
+        if (App.getNetwork().getCurrentUser().getGroups().size() == 0) {
             showNotFound("grupos");
-        }
-        else
+        } else {
             showGroups(App.getNetwork().getCurrentUser().getGroups());
+        }
     }//GEN-LAST:event_groupsActionPerformed
 
     private void solicitationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solicitationsActionPerformed
-       if(App.getNetwork().getCurrentUser().getFriendRequests().size()==0){
+        if (App.getNetwork().getCurrentUser().getFriendRequests().size() == 0) {
             showNotFound("solicitações");
-        }
-        else
+        } else {
             showFriendsRequests(App.getNetwork().getCurrentUser().getFriendRequests());
+        }
     }//GEN-LAST:event_solicitationsActionPerformed
 
     private void blockedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_blockedActionPerformed
-        if(App.getNetwork().getCurrentUser().getBlacklist().size()==0){
+        if (App.getNetwork().getCurrentUser().getBlacklist().size() == 0) {
             showNotFound("usuários bloqueados");
-        }
-        else
+        } else {
             showBlocked(App.getNetwork().getCurrentUser().getBlacklist());
+        }
     }//GEN-LAST:event_blockedActionPerformed
 
     /**
@@ -294,51 +296,60 @@ public class MainView extends javax.swing.JFrame {
             public void run() {
                 new MainView().setVisible(true);
             }
-        }); 
+        });
     }
-    
-    public void showFeed(){
+
+    public void showAboutView() {
+        viewPanel = new AboutView(App.getNetwork().getCurrentUser());
+        mainPane.setViewportView(viewPanel);
+    }
+
+    public void showFeed() {
         viewPanel = new FeedView();
         mainPane.setViewportView(viewPanel);
     }
-    
-    public void showGalery(){
+
+    public void showGalery() {
         viewPanel = new GaleryView();
         mainPane.setViewportView(viewPanel);
     }
-    
-    public void showSearch(String str){
+
+    public void showSearch(String str) {
         viewPanel = new Search(str);
         mainPane.setViewportView(viewPanel);
     }
-    
-    public void showProfile(User user){
+
+    public void showProfile(User user) {
         viewPanel = new UserView(user);
         mainPane.setViewportView(viewPanel);
     }
-     public void showFriends(List array){
+
+    public void showFriends(List array) {
         viewPanel = new PanelInfo(array, 0);
         mainPane.setViewportView(viewPanel);
     }
-    
-    public void showGroups(List array){
+
+    public void showGroups(List array) {
         viewPanel = new PanelInfo(array, 3);
         mainPane.setViewportView(viewPanel);
     }
-    public void showFriendsRequests(List array){
+
+    public void showFriendsRequests(List array) {
         viewPanel = new PanelInfo(array, 1);
         mainPane.setViewportView(viewPanel);
     }
-    public void showBlocked(List array){
+
+    public void showBlocked(List array) {
         viewPanel = new PanelInfo(array, 2);
         mainPane.setViewportView(viewPanel);
     }
-    public void showNotFound(String str){
+
+    public void showNotFound(String str) {
         viewPanel = new NotFound(str);
         mainPane.setViewportView(viewPanel);
     }
-    
-    public String getSearchText(){
+
+    public String getSearchText() {
         return searchText.getText();
     }
 
