@@ -157,9 +157,7 @@ public class User implements Serializable {
     }
     
     public void removeFriendRequest(User friendRequest) {
-        if(!(this.friendRequests.contains(friendRequest) || this.friends.contains(friendRequest))){
-            this.friendRequests.remove(friendRequest);
-        }
+        this.friendRequests.remove(friendRequest);
     }
     
     public boolean isFriendsWith(User user){
