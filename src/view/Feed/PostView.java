@@ -36,14 +36,11 @@ public class PostView extends javax.swing.JPanel {
         
         commentary = new WriteCommentary();
         GridBagConstraints c = new GridBagConstraints();
-            c.insets = new Insets(0, 0, 10, 10);
-            c.gridx = 1;
-            c.gridy = 0;
-            commentaryPanel.add(commentary, c);
-            commentaryPanel.setVisible(false);
-  
-        
- 
+        c.gridx = 0;
+        c.gridy = 0;
+        commentaryPanel.add(commentary, c);
+        commentaryPanel.setVisible(false);
+
     }
     public PostView(User user, Post post) {
         initComponents();
@@ -58,14 +55,10 @@ public class PostView extends javax.swing.JPanel {
         
         commentary = new WriteCommentary();
         GridBagConstraints c = new GridBagConstraints();
-            c.insets = new Insets(0, 0, 10, 10);
-            c.gridx = 1;
-            c.gridy = 0;
-            commentaryPanel.add(commentary, c);
-            commentaryPanel.setVisible(false);
-
-        
-        
+        c.gridx = 0;
+        c.gridy = 0;
+        commentaryPanel.add(commentary, c);
+        commentaryPanel.setVisible(false);
     }
 
     /**
@@ -106,7 +99,7 @@ public class PostView extends javax.swing.JPanel {
         );
         commentaryPanelLayout.setVerticalGroup(
             commentaryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 17, Short.MAX_VALUE)
         );
 
         showCommentsButton.setText("Comentario");
@@ -138,9 +131,6 @@ public class PostView extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(commentaryPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(name)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(date)
@@ -157,6 +147,7 @@ public class PostView extends javax.swing.JPanel {
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(text, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addComponent(commentaryPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,8 +165,7 @@ public class PostView extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(showCommentsButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(commentaryPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addComponent(commentaryPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
