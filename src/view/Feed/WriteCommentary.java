@@ -46,6 +46,8 @@ public class WriteCommentary extends javax.swing.JPanel {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
+        setBackground(new java.awt.Color(102, 255, 51));
+
         jScrollPane2.setViewportView(jTextPane1);
 
         commentBotton.setText("Comentar");

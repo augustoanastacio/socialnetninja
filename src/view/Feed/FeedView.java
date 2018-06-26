@@ -24,11 +24,13 @@ public class FeedView extends javax.swing.JPanel {
     private User user;
     
     public FeedView() {
-        GridBagLayout layout = new GridBagLayout(); 
         initComponents();
-        this.user = App.getNetwork().getCurrentUser();
+        
+        GridBagLayout layout = new GridBagLayout(); 
         postP.setLayout(layout);
         GridBagConstraints c = new GridBagConstraints();
+        
+        this.user = App.getNetwork().getCurrentUser();
         
         int i = 0;
         for(Post post: this.user.getFeed()){

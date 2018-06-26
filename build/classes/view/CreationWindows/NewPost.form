@@ -87,8 +87,6 @@
         <Property name="text" type="java.lang.String" value="Fotos adicionadas:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblfoto">
-    </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
@@ -104,5 +102,7 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JLabel" name="lblfoto">
+    </Component>
   </SubComponents>
 </Form>
