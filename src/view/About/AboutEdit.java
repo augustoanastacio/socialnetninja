@@ -8,12 +8,15 @@
 package view.About;
 
 import control.App;
+import java.awt.Image;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import model.User;
 
@@ -26,6 +29,7 @@ import model.User;
 public class AboutEdit extends javax.swing.JFrame {
     
     private final User user;
+    private ImageIcon image;
     /**
      * Creates new form ProfileView1
      */
@@ -37,6 +41,10 @@ public class AboutEdit extends javax.swing.JFrame {
         addressField.setText(user.getAddress());
         phoneFField.setText(user.getPhone());
         aboutAreaField.setText(user.getBio());
+        this.image = user.getProfilePicture();
+        if(user.getProfilePicture()!= null){
+            lblfoto.setIcon(new ImageIcon(image.getImage().getScaledInstance(lblfoto.getWidth(), lblfoto.getHeight(), Image.SCALE_SMOOTH)));
+        }
         
         
         
@@ -65,7 +73,7 @@ public class AboutEdit extends javax.swing.JFrame {
         phoneFField = new javax.swing.JFormattedTextField();
         saveChangesButton = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lblfoto = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -159,10 +167,15 @@ public class AboutEdit extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel1.setText("Foto de Perfil");
-        jLabel1.setRequestFocusEnabled(false);
+        lblfoto.setText("Foto de Perfil");
+        lblfoto.setRequestFocusEnabled(false);
 
         jButton1.setText("Alterar foto de perfil");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -172,13 +185,13 @@ public class AboutEdit extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblfoto, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(12, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblfoto, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
                 .addGap(0, 109, Short.MAX_VALUE))
@@ -233,8 +246,21 @@ public class AboutEdit extends javax.swing.JFrame {
         user.setAddress(addressField.getText());
         user.setPhone(phoneFField.getText());
         user.setBio(aboutAreaField.getText());
+        user.setProfilePicture(this.image);
         this.dispose();
     }//GEN-LAST:event_saveChangesButtonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        JFileChooser photo = new JFileChooser();
+        photo.setDialogTitle("Selecione uma foto");
+        photo.setFileSelectionMode(JFileChooser.FILES_ONLY);
+
+        int opc = photo.showOpenDialog(this);
+        if(opc == JFileChooser.APPROVE_OPTION){
+        this.image = new ImageIcon(photo.getSelectedFile().getPath());
+        lblfoto.setIcon(new ImageIcon(image.getImage().getScaledInstance(lblfoto.getWidth(), lblfoto.getHeight(), Image.SCALE_DEFAULT)));
+        }  
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -283,7 +309,6 @@ public class AboutEdit extends javax.swing.JFrame {
     private javax.swing.JTextField addressField;
     private javax.swing.JFormattedTextField dateFField;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
@@ -292,6 +317,7 @@ public class AboutEdit extends javax.swing.JFrame {
     private javax.swing.JLabel lblDob;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblPhone;
+    private javax.swing.JLabel lblfoto;
     private javax.swing.JTextField nameField;
     private javax.swing.JFormattedTextField phoneFField;
     private javax.swing.JButton saveChangesButton;
