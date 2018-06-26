@@ -6,6 +6,7 @@
 package view.Feed;
 
 import control.App;
+import javax.swing.ImageIcon;
 import model.Post;
 import model.User;
 
@@ -17,6 +18,7 @@ public class PostView extends javax.swing.JPanel {
 
     private User user;
     private Post post;
+    private ImageIcon image;
     
     public PostView(Post post){
         initComponents();
@@ -24,6 +26,9 @@ public class PostView extends javax.swing.JPanel {
         this.post = post;
         name.setText(this.user.getName());
         text.setText(this.post.getText());
+        this.image = post.getPicture();
+        lblfoto.setIcon(image);
+        
     }
     public PostView(User user, Post post) {
         initComponents();
@@ -31,6 +36,8 @@ public class PostView extends javax.swing.JPanel {
         this.post = post;
         name.setText(post.getUserName());
         text.setText(post.getText());
+        this.image = post.getPicture();
+        lblfoto.setIcon(image);
     }
 
     /**
@@ -46,6 +53,7 @@ public class PostView extends javax.swing.JPanel {
         Photos = new javax.swing.JPanel();
         privacyButton = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
+        lblfoto = new javax.swing.JLabel();
         showCommentsButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
         text = new javax.swing.JTextPane();
@@ -74,15 +82,27 @@ public class PostView extends javax.swing.JPanel {
             }
         });
 
+        lblfoto.setText("jLabel1");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(193, 193, 193)
+                    .addComponent(lblfoto)
+                    .addContainerGap(193, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 36, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(lblfoto)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         showCommentsButton.setText("Comentario");
@@ -172,6 +192,7 @@ public class PostView extends javax.swing.JPanel {
     private javax.swing.JLabel date;
     private javax.swing.JButton deleteButton;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblfoto;
     private javax.swing.JLabel name;
     private javax.swing.JButton privacyButton;
     private javax.swing.JButton showCommentsButton;

@@ -35,8 +35,8 @@ public class NewPost extends javax.swing.JFrame {
         initComponents();
         
         this.user = App.getNetwork().getCurrentUser();
-        GridBagLayout layout = new GridBagLayout();
-        panelP.setLayout(layout);
+//        GridBagLayout layout = new GridBagLayout();
+//        panelP.setLayout(layout);
         
     }
     
@@ -44,8 +44,8 @@ public class NewPost extends javax.swing.JFrame {
         initComponents();
         this.user = user;
         
-        GridBagLayout layout = new GridBagLayout();
-        panelP.setLayout(layout);
+//        GridBagLayout layout = new GridBagLayout();
+//        panelP.setLayout(layout);
     }
     
 
@@ -60,8 +60,8 @@ public class NewPost extends javax.swing.JFrame {
 
         addPhotoButton = new javax.swing.JButton();
         publishButton = new javax.swing.JButton();
-        panelP = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        lblfoto = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         text = new javax.swing.JTextArea();
 
@@ -82,17 +82,6 @@ public class NewPost extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout panelPLayout = new javax.swing.GroupLayout(panelP);
-        panelP.setLayout(panelPLayout);
-        panelPLayout.setHorizontalGroup(
-            panelPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        panelPLayout.setVerticalGroup(
-            panelPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 287, Short.MAX_VALUE)
-        );
-
         jLabel1.setText("Fotos adicionadas:");
 
         text.setColumns(20);
@@ -103,11 +92,13 @@ public class NewPost extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(panelP, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addComponent(lblfoto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane1)
                             .addGroup(layout.createSequentialGroup()
@@ -115,8 +106,8 @@ public class NewPost extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
                                 .addComponent(addPhotoButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(publishButton)))))
-                .addGap(4, 4, 4))
+                                .addComponent(publishButton)))
+                        .addGap(4, 4, 4))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,7 +119,7 @@ public class NewPost extends javax.swing.JFrame {
                     .addComponent(addPhotoButton)
                     .addComponent(publishButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblfoto, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -139,7 +130,7 @@ public class NewPost extends javax.swing.JFrame {
     private void publishButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_publishButtonActionPerformed
         Date datePosted = new Date();
         
-        Post p1 = new Post(App.getNetwork().getCurrentUser().getName(), this.text.getText(), datePosted); 
+        Post p1 = new Post(App.getNetwork().getCurrentUser().getName(), this.text.getText(), datePosted, this.image); 
         this.user.addPost(p1);
         
         if(user == App.getNetwork().getCurrentUser()){
@@ -160,16 +151,18 @@ public class NewPost extends javax.swing.JFrame {
         int opc = photo.showOpenDialog(this);
         if(opc == JFileChooser.APPROVE_OPTION){
         image = new ImageIcon(photo.getSelectedFile().getPath());
+        lblfoto.setIcon(new ImageIcon(image.getImage().getScaledInstance(lblfoto.getWidth(), lblfoto.getHeight(), Image.SCALE_DEFAULT)));
+        
     } 	   
 
-            GridBagConstraints c = new GridBagConstraints();
-            photoView = new PhotosView(image);
-            c.insets = new Insets(0, 0, 10, 0);
-            c.gridx = 0;
-            c.gridy = 0;
-            panelP.add(photoView, c);
-            panelP.setVisible(false);
-            panelP.setVisible(true);
+//            GridBagConstraints c = new GridBagConstraints();
+//            photoView = new PhotosView(image);
+//            c.insets = new Insets(0, 0, 10, 0);
+//            c.gridx = 0;
+//            c.gridy = 0;
+//            panelP.add(photoView, c);
+//            panelP.setVisible(false);
+//            panelP.setVisible(true);
         
 
     }//GEN-LAST:event_addPhotoButtonActionPerformed
@@ -213,7 +206,7 @@ public class NewPost extends javax.swing.JFrame {
     private javax.swing.JButton addPhotoButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JPanel panelP;
+    private javax.swing.JLabel lblfoto;
     private javax.swing.JButton publishButton;
     private javax.swing.JTextArea text;
     // End of variables declaration//GEN-END:variables
