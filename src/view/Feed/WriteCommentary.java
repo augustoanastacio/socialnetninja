@@ -126,7 +126,7 @@ public class WriteCommentary extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void commentBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_commentBottonActionPerformed
-        comment = new Comment(user.getName(), textArea.getText(), new Date());
+        comment = new Comment(this.user, textArea.getText(), new Date());
         post.addComment(comment);
     }//GEN-LAST:event_commentBottonActionPerformed
 

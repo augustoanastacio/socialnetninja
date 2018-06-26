@@ -16,8 +16,8 @@ public class Post extends DataModel implements Serializable {
     private List<Comment> comments;
     private boolean visibility;
 
-    public Post(String userName, String text, Date datePosted, ImageIcon picture) {
-        this.userName = userName;
+    public Post(User user, String text, Date datePosted, ImageIcon picture) {
+        this.user = user;
         this.text = text;
         this.datePosted = datePosted;
         this.picture = picture;
@@ -25,8 +25,8 @@ public class Post extends DataModel implements Serializable {
         visibility = true;
     }
     
-    public Post(String userName, String text, Date datePosted) {
-        this.userName = userName;
+    public Post(User user, String text, Date datePosted) {
+        this.user = user;
         this.text = text;
         this.datePosted = datePosted;
         this.picture = null;
@@ -58,7 +58,7 @@ public class Post extends DataModel implements Serializable {
         return visibility;
     }
     
-    public void setVisibility(boolean visibility){
+    public void setPrivacy(boolean visibility){
         this.visibility = visibility;
     }
 }

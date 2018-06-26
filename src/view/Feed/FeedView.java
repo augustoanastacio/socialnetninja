@@ -32,7 +32,7 @@ public class FeedView extends javax.swing.JPanel {
         
         int i = 0;
         for(Post post: this.user.getFeed()){
-            p1 = new PostView(App.getNetwork().getCurrentUser(), post);
+            p1 = new PostView(this.user, post);
             c.insets = new Insets(0, 0, 10, 10);
             c.gridx = 0;
             c.gridy = i;

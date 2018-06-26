@@ -19,7 +19,6 @@ import model.User;
  * @autho   r Usuario
  */
 public class PostView extends javax.swing.JPanel {
-
     private User user;
     private Post post;
     private WriteCommentary commentary;
@@ -32,11 +31,13 @@ public class PostView extends javax.swing.JPanel {
         pressed = true;
         name.setText(this.user.getName());
         text.setText(this.post.getText());
+        
         if(post.getPicture()==null){
             imageLabel.setVisible(false);
         } else {
-            imageLabel.setIcon(new ImageIcon(post.getPicture().getImage().getScaledInstance(imageLabel.getWidth(), imageLabel.getHeight(), Image.SCALE_DEFAULT)));
+            //imageLabel.setIcon(new ImageIcon(post.getPicture().getImage().getScaledInstance(imageLabel.getWidth(), imageLabel.getHeight(), Image.SCALE_DEFAULT)));
         }
+        
         GridBagLayout layout = new GridBagLayout(); 
         commentaryPanel.setLayout(layout);
         
@@ -53,22 +54,26 @@ public class PostView extends javax.swing.JPanel {
         this.user = user;
         this.post = post;
         pressed = true;
-        name.setText(post.getUserName());
+        name.setText(post.getUser().getName());
         text.setText(post.getText());
+        name.setText(post.getUser().getName());
+        text.setText(post.getText());
+        
         if(post.getPicture()==null){
             imageLabel.setVisible(false);
         } else {
             //imageLabel.setIcon(new ImageIcon(post.getPicture().getImage().getScaledInstance(imageLabel.getWidth(), imageLabel.getHeight(), Image.SCALE_DEFAULT)));
         }
+        
         GridBagLayout layout = new GridBagLayout(); 
         commentaryPanel.setLayout(layout);
-        
+
         commentary = new WriteCommentary(this.post);
         GridBagConstraints c = new GridBagConstraints();
         c.gridx = 0;
         c.gridy = 0;
         commentaryPanel.add(commentary, c);
-        commentaryPanel.setVisible(false);
+        commentaryPanel.setVisible(false);     
     }
 
     /**
@@ -182,17 +187,17 @@ public class PostView extends javax.swing.JPanel {
 
     private void privacyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_privacyButtonActionPerformed
         if(this.post.isPublic()){
-            this.post.setVisibility(false);
-            this.privacyButton.setText("Tornar Público");
+            this.post.setPrivacy(false);
         }else{
-            this.post.setVisibility(true);
-            this.privacyButton.setText("Tornar Privado");
+            this.post.setPrivacy(true);
         }
+        
         App.showFeed();
     }//GEN-LAST:event_privacyButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         App.getNetwork().getCurrentUser().removePost(this.post);
+        App.showFeed();
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void showCommentsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showCommentsButtonActionPerformed

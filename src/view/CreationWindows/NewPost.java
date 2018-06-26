@@ -129,7 +129,7 @@ public class NewPost extends javax.swing.JFrame {
     private void publishButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_publishButtonActionPerformed
         Date datePosted = new Date();
         
-        Post p1 = new Post(App.getNetwork().getCurrentUser().getName(), this.text.getText(), datePosted, this.image); 
+        Post p1 = new Post(App.getNetwork().getCurrentUser(), this.text.getText(), datePosted, this.image); 
         this.user.addPost(p1);
         
         if(user == App.getNetwork().getCurrentUser()){

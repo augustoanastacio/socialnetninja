@@ -4,12 +4,12 @@ import java.io.Serializable;
 import java.util.Date;
 
 public abstract class DataModel implements Serializable{
-    protected String userName;
+    protected User user;
     protected String text;
     protected Date datePosted;
     
-    public String getUserName() {
-        return userName;
+    public User getUser() {
+        return user;
     }
 
     public String getText() {
@@ -20,8 +20,8 @@ public abstract class DataModel implements Serializable{
         return datePosted;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public void setText(String text) {

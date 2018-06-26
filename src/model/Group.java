@@ -114,6 +114,8 @@ public class Group implements Serializable{
     public void setDateCreated(Date dateCreated) {
         this.dateCreated = dateCreated;
     }
+    
+    
         
         
 }
