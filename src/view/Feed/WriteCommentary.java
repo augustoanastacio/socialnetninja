@@ -29,15 +29,22 @@ public class WriteCommentary extends javax.swing.JPanel {
         initComponents();
         this.user = App.getNetwork().getCurrentUser();
         this.post = post;
+        textArea.setLineWrap(true);
         
         GridBagLayout layout = new GridBagLayout();
         commentaryPanel.setLayout(layout);
 
-        commentary = new Commentary();
-        GridBagConstraints c = new GridBagConstraints();
-        c.gridx = 0;
-        c.gridy = 0;
-        commentaryPanel.add(commentary, c);
+        int i = 0;
+        for(Comment comment: post.getComments()){
+            GridBagConstraints c = new GridBagConstraints();
+            commentary = new Commentary(App.getNetwork().getCurrentUser(), comment);
+            commentaryPanel.add(commentary, c);
+            c.insets = new Insets(0, 0, 10, 10);
+            c.gridx = 0;
+            c.gridy = i;
+            commentaryPanel.add(commentary, c);
+            i++;     
+        }
     }
     
 
@@ -120,13 +127,7 @@ public class WriteCommentary extends javax.swing.JPanel {
 
     private void commentBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_commentBottonActionPerformed
         comment = new Comment(user.getName(), textArea.getText(), new Date());
-        post.getComments().add(comment);
-        
-        commentary = new Commentary();
-        GridBagConstraints c = new GridBagConstraints();
-        c.gridx = 0;
-        c.gridy = 0;
-        commentaryPanel.add(commentary, c);
+        post.addComment(comment);
     }//GEN-LAST:event_commentBottonActionPerformed
 
 

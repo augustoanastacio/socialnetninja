@@ -192,7 +192,7 @@ public class PostView extends javax.swing.JPanel {
     }//GEN-LAST:event_privacyButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
-        this.user.removePost(this.post);
+        App.getNetwork().getCurrentUser().removePost(this.post);
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void showCommentsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showCommentsButtonActionPerformed
