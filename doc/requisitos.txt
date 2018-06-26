@@ -1,0 +1,24 @@
+Usuarios:
+  blacklist
+  Perfil:
+    foto
+    bio
+    amigos
+  Fotos
+  Mural:
+    posts:
+      fotos
+      texto
+      comentarios
+  solicitações de amizade
+  Pode listar usuarios e grupos da rede
+
+Grupos:
+  usuarios
+  adm
+  mural (coletivo):
+    posts:
+      fotos
+      texto
+      comentarios
+  solicitação de entrada

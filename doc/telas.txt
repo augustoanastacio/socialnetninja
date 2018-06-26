@@ -1,0 +1,36 @@
+﻿Barra de pesquisa global///////////
+
+//Login
+//criação de usuario
+  nome
+  email
+  senha
+  dob
+
+perfil usuario
+  botao fotos
+  botao amigos
+  botao grupos
+  botao criar post
+  mural usuario
+
+perfil dosoto:
+  botao fotos
+  botao amigos
+  botao solicitar amizade
+  botao bloquear
+  botao criar post no mural dosoto
+  mural docara
+
+//alteração de senha:
+  senha antiga
+  senha nova
+  senha nova confirmar
+
+criação de post:
+  texto
+
+fotos
+amigos
+solitações
+listar grupos/listar usuarios
