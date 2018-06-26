@@ -18,14 +18,14 @@ import model.User;
  *
  * @author Usuario
  */
-public class WriteCommentary extends javax.swing.JPanel {
+public class WriteCommentView extends javax.swing.JPanel {
 
-   private Commentary commentary;
+   private CommentView commentary;
    private Comment comment;
    private User user;
    private Post post;
     
-    public WriteCommentary(Post post) {
+    public WriteCommentView(Post post) {
         initComponents();
         this.user = App.getNetwork().getCurrentUser();
         this.post = post;
@@ -37,7 +37,7 @@ public class WriteCommentary extends javax.swing.JPanel {
         int i = 0;
         for(Comment comment: post.getComments()){
             GridBagConstraints c = new GridBagConstraints();
-            commentary = new Commentary(App.getNetwork().getCurrentUser(), comment);
+            commentary = new CommentView(App.getNetwork().getCurrentUser(), comment);
             commentaryPanel.add(commentary, c);
             c.insets = new Insets(0, 0, 10, 10);
             c.gridx = 0;

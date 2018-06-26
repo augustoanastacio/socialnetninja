@@ -9,12 +9,12 @@ package view.Feed;
  *
  * @author Usuario
  */
-public class Answer extends javax.swing.JPanel {
+public class AnswerView extends javax.swing.JPanel {
 
     /**
      * Creates new form Awnser
      */
-    public Answer() {
+    public AnswerView() {
         initComponents();
     }
 

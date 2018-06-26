@@ -12,16 +12,16 @@ import java.awt.GridBagLayout;
  *
  * @author Usuario
  */
-public class WriteAnswer extends javax.swing.JPanel {
+public class WriteAnswerView extends javax.swing.JPanel {
 
-    private Answer answer;
+    private AnswerView answer;
     
-    public WriteAnswer() {
+    public WriteAnswerView() {
         initComponents();
         GridBagLayout layout = new GridBagLayout(); 
         answerPanel.setLayout(layout);
         
-        answer = new Answer();
+        answer = new AnswerView();
         GridBagConstraints c = new GridBagConstraints();
         c.gridx = 0;
         c.gridy = 0;

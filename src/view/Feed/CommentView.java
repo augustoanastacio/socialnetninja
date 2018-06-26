@@ -14,12 +14,12 @@ import model.User;
  *
  * @author Usuario
  */
-public class Commentary extends javax.swing.JPanel {
+public class CommentView extends javax.swing.JPanel {
 
-    private WriteAnswer answer;
+    private WriteAnswerView answer;
     private boolean pressed;
     
-    public Commentary(User user, Comment comment) {
+    public CommentView(User user, Comment comment) {
         initComponents();
         pressed = true;
          GridBagLayout layout = new GridBagLayout(); 
@@ -29,7 +29,7 @@ public class Commentary extends javax.swing.JPanel {
         userLabel.setText(user.getName());
         txtPanel.setText(comment.getText());
         
-        answer = new WriteAnswer();
+        answer = new WriteAnswerView();
         GridBagConstraints c = new GridBagConstraints();
         c.gridx = 0;
         c.gridy = 0;

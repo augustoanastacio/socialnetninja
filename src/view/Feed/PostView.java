@@ -11,6 +11,7 @@ import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.awt.Insets;
 import javax.swing.ImageIcon;
+import model.Group;
 import model.Post;
 import model.User;
 
@@ -20,8 +21,9 @@ import model.User;
  */
 public class PostView extends javax.swing.JPanel {
     private User user;
+    private Group group;
     private Post post;
-    private WriteCommentary commentary;
+    private WriteCommentView commentary;
     private boolean pressed;
     
     public PostView(Post post){
@@ -41,7 +43,7 @@ public class PostView extends javax.swing.JPanel {
         GridBagLayout layout = new GridBagLayout(); 
         commentaryPanel.setLayout(layout);
         
-        commentary = new WriteCommentary(this.post);
+        commentary = new WriteCommentView(this.post);
         GridBagConstraints c = new GridBagConstraints();
         c.gridx = 0;
         c.gridy = 0;
@@ -67,7 +69,33 @@ public class PostView extends javax.swing.JPanel {
         GridBagLayout layout = new GridBagLayout(); 
         commentaryPanel.setLayout(layout);
 
-        commentary = new WriteCommentary(this.post);
+        commentary = new WriteCommentView(this.post);
+        GridBagConstraints c = new GridBagConstraints();
+        c.gridx = 0;
+        c.gridy = 0;
+        commentaryPanel.add(commentary, c);
+        commentaryPanel.setVisible(false);     
+    }
+    
+    public PostView(Group group, Post post) {
+        initComponents();
+        this.group = group;
+        this.post = post;
+        
+        pressed = true;
+        name.setText(post.getUser().getName());
+        text.setText(post.getText());
+        
+        if(post.getPicture() == null){
+            imageLabel.setVisible(false);
+        } else {
+            //imageLabel.setIcon(new ImageIcon(post.getPicture().getImage().getScaledInstance(imageLabel.getWidth(), imageLabel.getHeight(), Image.SCALE_DEFAULT)));
+        }
+        
+        GridBagLayout layout = new GridBagLayout(); 
+        commentaryPanel.setLayout(layout);
+
+        commentary = new WriteCommentView(this.post);
         GridBagConstraints c = new GridBagConstraints();
         c.gridx = 0;
         c.gridy = 0;
