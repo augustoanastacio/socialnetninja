@@ -90,6 +90,7 @@ public class AboutEdit extends javax.swing.JFrame {
         lblAbout.setText("Sobre");
 
         aboutAreaField.setColumns(20);
+        aboutAreaField.setLineWrap(true);
         aboutAreaField.setRows(5);
         jScrollPane1.setViewportView(aboutAreaField);
 

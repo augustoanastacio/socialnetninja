@@ -9,6 +9,7 @@ import control.App;
 import javax.swing.JPanel;
 import model.User;
 import view.About.AboutEdit;
+import view.About.AboutView;
 import view.Feed.FeedView;
 import view.SearchSolicitationBlock.PanelInfo;
 
@@ -34,6 +35,11 @@ public class UserView extends javax.swing.JPanel {
         }
         
         showFeed();
+    }
+    
+    public void showAboutView(){
+        viewPanel = new AboutView(this.user);
+        userViewPanel.setViewportView(viewPanel);
     }
     
     public void showFeed(){
@@ -68,6 +74,7 @@ public class UserView extends javax.swing.JPanel {
         userViewPanel = new javax.swing.JScrollPane();
         showFeedButton = new javax.swing.JButton();
 
+        profilePictureLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/casinha.png"))); // NOI18N
         profilePictureLabel.setText("Foto do usuario");
 
         showFriendsButton.setText("Ver Amigos");
@@ -172,11 +179,11 @@ public class UserView extends javax.swing.JPanel {
     }//GEN-LAST:event_blockButtonActionPerformed
 
     private void showAboutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showAboutButtonActionPerformed
-        
+        showAboutView();
     }//GEN-LAST:event_showAboutButtonActionPerformed
 
     private void showFeedButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showFeedButtonActionPerformed
-        // TODO add your handling code here:
+        showFeed();
     }//GEN-LAST:event_showFeedButtonActionPerformed
 
     private void showFriendsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showFriendsButtonActionPerformed
